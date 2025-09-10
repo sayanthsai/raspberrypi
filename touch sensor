@@ -1,0 +1,16 @@
+import RPi.GPIO as GPIO
+import time
+
+GPIO.setmode(GPIO.BCM)      # Use BCM numbering
+GPIO.setup(8, GPIO.IN)    # Set GPIO 14 as input
+
+try:
+    while True:
+        if GPIO.input(8):
+            print("Touch detected!")
+        else:
+            print("No touch.")
+        time.sleep(0.2)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+
